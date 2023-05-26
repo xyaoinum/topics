@@ -9,7 +9,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version 3383f409d, updated Fri Apr 28 15:49:22 2023 -0700" name="generator">
   <link href="https://github.com/patcg-individual-drafts/topics" rel="canonical">
-  <meta content="0e01114b3e67f3093f33dcac4c1535090eed5e6e" name="document-revision">
+  <meta content="74b548c892b3768ca4afcf7956851e0b6c96a74b" name="document-revision">
 <style>
 /* .XXX from https://resources.whatwg.org/standard.css */
 .XXX {
@@ -1435,7 +1435,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
        <p><a data-link-type="dfn" href="https://fetch.spec.whatwg.org/#concept-header-list-set-structured-header" id="ref-for-concept-header-list-set-structured-header">Set a structured field value</a> given (<span>`<code><a data-link-type="http-header" href="#http-headerdef-sec-browsing-topics" id="ref-for-http-headerdef-sec-browsing-topics②">Sec-Browsing-Topics</a></code>`</span>, <var>headerStructuredFields</var>) in <var>request</var>’s <a data-link-type="dfn" href="https://fetch.spec.whatwg.org/#concept-request-header-list" id="ref-for-concept-request-header-list①">header list</a>.</p>
      </ol>
      <div class="note" role="note">
-       This algorithm transforms the topics list into structured fields format, which contains paddings to make the total length consistent across multiple invocations from potentially different caller origins. 
+       This algorithm transforms the topics list into structured fields format, which contains paddings to make the total length consistent for different topics callers. 
       <div class="example" id="example-ba369a79">
        <a class="self-link" href="#example-ba369a79"></a> Empty returned topics, and underlying epochs have same versions: 
        <p><code>t=(), p=P000000000000000000000000000</code></p>
