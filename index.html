@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version 3383f409d, updated Fri Apr 28 15:49:22 2023 -0700" name="generator">
   <link href="https://github.com/patcg-individual-drafts/topics" rel="canonical">
-  <meta content="d50e9528139d56b7fda2a0d661ea927825c9c46e" name="document-revision">
+  <meta content="ba081a9929586369d9a992090ad0d0a3bea8d40b" name="document-revision">
 <style>
 /* .XXX from https://resources.whatwg.org/standard.css */
 .XXX {
@@ -1102,26 +1102,8 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
       <li data-md>
        <p>Let <var>result</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑥">list</a>.</p>
       <li data-md>
-       <p>Let <var>epochsHaveDifferentVersions</var> be false.</p>
-      <li data-md>
-       <p>Let <var>lastTaxonomyVersion</var> be null.</p>
-      <li data-md>
-       <p>Let <var>lastModelVersion</var> be null.</p>
-      <li data-md>
        <p>For each <var>epoch</var> in <var>epochs</var>:</p>
        <ol>
-        <li data-md>
-         <p>If <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-taxonomy-version" id="ref-for-epoch-taxonomy-version①">taxonomy version</a> is empty (implying the topics calculation failed for that epoch): then continue.</p>
-        <li data-md>
-         <p>If <var>lastTaxonomyVersion</var> is null:</p>
-         <ol>
-          <li data-md>
-           <p>Set <var>lastTaxonomyVersion</var> to <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-taxonomy-version" id="ref-for-epoch-taxonomy-version②">taxonomy version</a>.</p>
-          <li data-md>
-           <p>Set <var>lastModelVersion</var> to <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-model-version" id="ref-for-epoch-model-version①">model version</a>.</p>
-         </ol>
-        <li data-md>
-         <p>Else if <var>lastTaxonomyVersion</var> != <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-taxonomy-version" id="ref-for-epoch-taxonomy-version③">taxonomy version</a> or <var>lastModelVersion</var> != <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-model-version" id="ref-for-epoch-model-version②">model version</a>, then set <var>epochsHaveDifferentVersions</var> to true.</p>
         <li data-md>
          <p>If <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-top-5-topics-with-caller-origins" id="ref-for-epoch-top-5-topics-with-caller-origins①">top 5 topics with caller origins</a> is empty (the topics were cleared), then continue.</p>
         <li data-md>
@@ -1157,9 +1139,9 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
         <li data-md>
          <p>Set <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-configversion" id="ref-for-dom-browsingtopic-configversion">configVersion</a></code>"] to to <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-config-version" id="ref-for-epoch-config-version①">config version</a>.</p>
         <li data-md>
-         <p>Set <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-modelversion" id="ref-for-dom-browsingtopic-modelversion">modelVersion</a></code> to"] <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-model-version" id="ref-for-epoch-model-version③">model version</a>.</p>
+         <p>Set <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-modelversion" id="ref-for-dom-browsingtopic-modelversion">modelVersion</a></code> to"] <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-model-version" id="ref-for-epoch-model-version①">model version</a>.</p>
         <li data-md>
-         <p>Set <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-taxonomyversion" id="ref-for-dom-browsingtopic-taxonomyversion">taxonomyVersion</a></code>"] to <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-taxonomy-version" id="ref-for-epoch-taxonomy-version④">taxonomy version</a>.</p>
+         <p>Set <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-taxonomyversion" id="ref-for-dom-browsingtopic-taxonomyversion">taxonomyVersion</a></code>"] to <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-taxonomy-version" id="ref-for-epoch-taxonomy-version①">taxonomy version</a>.</p>
         <li data-md>
          <p>Determine the <a data-link-type="dfn" href="#browsing-topics-types-version" id="ref-for-browsing-topics-types-version①">version</a> <var>version</var>, given <var>topic</var>’s <code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-configversion" id="ref-for-dom-browsingtopic-configversion①">configVersion</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-modelversion" id="ref-for-dom-browsingtopic-modelversion①">modelVersion</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-taxonomyversion" id="ref-for-dom-browsingtopic-taxonomyversion①">taxonomyVersion</a></code> as input.</p>
         <li data-md>
@@ -2028,8 +2010,8 @@ window.dfnpanelData['user-topics-state-epochs'] = {"dfnID": "user-topics-state-e
 window.dfnpanelData['user-topics-state-hmac-key'] = {"dfnID": "user-topics-state-hmac-key", "url": "#user-topics-state-hmac-key", "dfnText": "hmac key", "refSections": [{"refs": [{"id": "ref-for-user-topics-state-hmac-key"}], "title": "3. User agent associated state"}, {"refs": [{"id": "ref-for-user-topics-state-hmac-key\u2460"}], "title": "10. Epochs for caller"}, {"refs": [{"id": "ref-for-user-topics-state-hmac-key\u2461"}, {"id": "ref-for-user-topics-state-hmac-key\u2462"}, {"id": "ref-for-user-topics-state-hmac-key\u2463"}], "title": "11. Topics for caller"}], "external": false};
 window.dfnpanelData['browsing-topics-types-epoch'] = {"dfnID": "browsing-topics-types-epoch", "url": "#browsing-topics-types-epoch", "dfnText": "epoch", "refSections": [{"refs": [{"id": "ref-for-browsing-topics-types-epoch"}], "title": "2. Terminology and types"}, {"refs": [{"id": "ref-for-browsing-topics-types-epoch\u2460"}, {"id": "ref-for-browsing-topics-types-epoch\u2461"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-browsing-topics-types-epoch\u2462"}], "title": "10. Epochs for caller"}], "external": false};
 window.dfnpanelData['epoch-taxonomy'] = {"dfnID": "epoch-taxonomy", "url": "#epoch-taxonomy", "dfnText": "taxonomy", "refSections": [{"refs": [{"id": "ref-for-epoch-taxonomy"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-epoch-taxonomy\u2460"}, {"id": "ref-for-epoch-taxonomy\u2461"}], "title": "11. Topics for caller"}], "external": false};
-window.dfnpanelData['epoch-taxonomy-version'] = {"dfnID": "epoch-taxonomy-version", "url": "#epoch-taxonomy-version", "dfnText": "taxonomy version", "refSections": [{"refs": [{"id": "ref-for-epoch-taxonomy-version"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-epoch-taxonomy-version\u2460"}, {"id": "ref-for-epoch-taxonomy-version\u2461"}, {"id": "ref-for-epoch-taxonomy-version\u2462"}, {"id": "ref-for-epoch-taxonomy-version\u2463"}], "title": "11. Topics for caller"}], "external": false};
-window.dfnpanelData['epoch-model-version'] = {"dfnID": "epoch-model-version", "url": "#epoch-model-version", "dfnText": "model version", "refSections": [{"refs": [{"id": "ref-for-epoch-model-version"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-epoch-model-version\u2460"}, {"id": "ref-for-epoch-model-version\u2461"}, {"id": "ref-for-epoch-model-version\u2462"}], "title": "11. Topics for caller"}], "external": false};
+window.dfnpanelData['epoch-taxonomy-version'] = {"dfnID": "epoch-taxonomy-version", "url": "#epoch-taxonomy-version", "dfnText": "taxonomy version", "refSections": [{"refs": [{"id": "ref-for-epoch-taxonomy-version"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-epoch-taxonomy-version\u2460"}], "title": "11. Topics for caller"}], "external": false};
+window.dfnpanelData['epoch-model-version'] = {"dfnID": "epoch-model-version", "url": "#epoch-model-version", "dfnText": "model version", "refSections": [{"refs": [{"id": "ref-for-epoch-model-version"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-epoch-model-version\u2460"}], "title": "11. Topics for caller"}], "external": false};
 window.dfnpanelData['epoch-config-version'] = {"dfnID": "epoch-config-version", "url": "#epoch-config-version", "dfnText": "config version", "refSections": [{"refs": [{"id": "ref-for-epoch-config-version"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-epoch-config-version\u2460"}], "title": "11. Topics for caller"}], "external": false};
 window.dfnpanelData['epoch-top-5-topics-with-caller-origins'] = {"dfnID": "epoch-top-5-topics-with-caller-origins", "url": "#epoch-top-5-topics-with-caller-origins", "dfnText": "top 5 topics with caller origins", "refSections": [{"refs": [{"id": "ref-for-epoch-top-5-topics-with-caller-origins"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-epoch-top-5-topics-with-caller-origins\u2460"}, {"id": "ref-for-epoch-top-5-topics-with-caller-origins\u2461"}], "title": "11. Topics for caller"}], "external": false};
 window.dfnpanelData['epoch-time'] = {"dfnID": "epoch-time", "url": "#epoch-time", "dfnText": "time", "refSections": [{"refs": [{"id": "ref-for-epoch-time"}, {"id": "ref-for-epoch-time\u2460"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-epoch-time\u2461"}], "title": "10. Epochs for caller"}, {"refs": [{"id": "ref-for-epoch-time\u2462"}, {"id": "ref-for-epoch-time\u2463"}, {"id": "ref-for-epoch-time\u2464"}], "title": "11. Topics for caller"}], "external": false};
