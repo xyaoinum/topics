@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version 5fcd28d6d, updated Tue May 30 13:12:11 2023 -0700" name="generator">
   <link href="https://github.com/patcg-individual-drafts/topics" rel="canonical">
-  <meta content="ed1fae2eaf09bf2ad5e4cb18d5888ef553bc846b" name="document-revision">
+  <meta content="c83af89081e03e45a4afe8781ce4ae9fef365208" name="document-revision">
 <style>
 /* .XXX from https://resources.whatwg.org/standard.css */
 .XXX {
@@ -1423,15 +1423,15 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <p>For each <var>topic</var> in <var>topics</var>:</p>
        <ol>
         <li data-md>
-         <p>If <var>lastVersion</var> is null or if <var>lastVersion</var> != <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-version" id="ref-for-dom-browsingtopic-version③">version</a></code>"]:</p>
+         <p>If <var>lastVersion</var> is null or if <var>lastVersion</var> is not <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-version" id="ref-for-dom-browsingtopic-version③">version</a></code>"]:</p>
          <ol>
           <li data-md>
            <p>If <var>currentTopicsInnerList</var> is not empty:</p>
            <ol>
             <li data-md>
-             <p>Let <var>topicParameters</var> be an empty <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#ame-parameters" id="ref-for-ame-parameters">Structured Fields Parameters</a>.</p>
+             <p>Let <var>topicParameters</var> be an empty <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-parameters" id="ref-for-name-parameters">Structured Fields Parameters</a>.</p>
             <li data-md>
-             <p>Set <var>topicParameters</var>["<code>v</code>"] to a <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-tokens" id="ref-for-name-tokens">Structured Fields Token</a> having words <var>lastVersion</var>.</p>
+             <p>Set <var>topicParameters</var>["<code>v</code>"] to a <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-tokens" id="ref-for-name-tokens">Structured Fields Token</a> with value <var>lastVersion</var>.</p>
             <li data-md>
              <p>Associate <var>topicParameters</var> with <var>currentTopicsInnerList</var>.</p>
             <li data-md>
@@ -1451,9 +1451,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <p>If <var>currentTopicsInnerList</var> is not empty:</p>
        <ol>
         <li data-md>
-         <p>Let <var>topicParameters</var> be an empty <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#ame-parameters" id="ref-for-ame-parameters①">Structured Fields Parameters</a>.</p>
+         <p>Let <var>topicParameters</var> be an empty <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-parameters" id="ref-for-name-parameters①">Structured Fields Parameters</a>.</p>
         <li data-md>
-         <p>Set <var>topicParameters</var>["<code>v</code>"] to a <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-tokens" id="ref-for-name-tokens①">Structured Fields Token</a> having words <var>lastVersion</var>.</p>
+         <p>Set <var>topicParameters</var>["<code>v</code>"] to a <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-tokens" id="ref-for-name-tokens①">Structured Fields Token</a> with value <var>lastVersion</var>.</p>
         <li data-md>
          <p>Associate <var>topicParameters</var> with <var>currentTopicsInnerList</var>.</p>
         <li data-md>
@@ -1494,16 +1494,16 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li data-md>
        <p>If <var>paddingLength</var> &lt; 0, then set <var>paddingLength</var> to 0.</p>
      </ol>
-     <p class="note" role="note"><span class="marker">Note:</span> the padding should generally be >= 0. It may be negative in certain circumstances: when historically stored topic versions are greater (and use more digits) than the current <a data-link-type="dfn" href="#browsing-topics-types-maximum-version-string-length" id="ref-for-browsing-topics-types-maximum-version-string-length②">maximum version string length</a>; or when there is a race between getting topics and getting the number of distinct topic versions. Clamp to 0 to prevent breakage in these rare circumstances.</p>
+     <p class="note" role="note"><span class="marker">Note:</span> the padding should generally be ≥ 0. It may be negative in certain circumstances: when historically stored topic versions are greater (and use more digits) than the current <a data-link-type="dfn" href="#browsing-topics-types-maximum-version-string-length" id="ref-for-browsing-topics-types-maximum-version-string-length②">maximum version string length</a>; or when there is a race between getting topics and getting the number of distinct topic versions. Clamp to 0 to prevent breakage in these rare circumstances.</p>
      <ol>
       <li data-md>
        <p>Let <var>paddedToken</var> be "P".</p>
       <li data-md>
        <p>Append <var>paddingLength</var> <code>"0"</code> characters to the end of <var>paddedToken</var>.</p>
       <li data-md>
-       <p>Let <var>paddedEntryParameters</var> be an empty <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#ame-parameters" id="ref-for-ame-parameters②">Structured Fields Parameters</a>.</p>
+       <p>Let <var>paddedEntryParameters</var> be an empty <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-parameters" id="ref-for-name-parameters②">Structured Fields Parameters</a>.</p>
       <li data-md>
-       <p>Set <var>paddedEntryParameters</var>["<code>p</code>"] to a <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-tokens" id="ref-for-name-tokens②">Structured Fields Token</a> having words <var>paddedToken</var>.</p>
+       <p>Set <var>paddedEntryParameters</var>["<code>p</code>"] to a <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc8941.html#name-tokens" id="ref-for-name-tokens②">Structured Fields Token</a> with value <var>paddedToken</var>.</p>
       <li data-md>
        <p>Associate <var>paddedEntryParameters</var> with <var>currentTopicsInnerList</var>.</p>
       <li data-md>
@@ -1800,7 +1800,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li><span class="dfn-paneled" id="5ab7b520">reflect</span>
      <li><span class="dfn-paneled" id="e99bd18e">relevant global object</span>
      <li><span class="dfn-paneled" id="65181da8">secure context</span>
-     <li><span class="dfn-paneled" id="2b34361d">structured fields parameters</span>
+     <li><span class="dfn-paneled" id="5bea5516">structured fields parameters</span>
      <li><span class="dfn-paneled" id="b5e4ce8a">structured fields token</span>
      <li><span class="dfn-paneled" id="30717154">top-level traversable</span>
     </ul>
@@ -2261,7 +2261,7 @@ window.dfnpanelData['48438eb3'] = {"dfnID": "48438eb3", "url": "https://html.spe
 window.dfnpanelData['5ab7b520'] = {"dfnID": "5ab7b520", "url": "https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#reflect", "dfnText": "reflect", "refSections": [{"refs": [{"id": "ref-for-reflect"}], "title": "14.2. browsingtopics content attribute for HTMLIframeElement"}], "external": true};
 window.dfnpanelData['e99bd18e'] = {"dfnID": "e99bd18e", "url": "https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global", "dfnText": "relevant global object", "refSections": [{"refs": [{"id": "ref-for-concept-relevant-global"}, {"id": "ref-for-concept-relevant-global\u2460"}], "title": "13. The JavaScript API"}], "external": true};
 window.dfnpanelData['65181da8'] = {"dfnID": "65181da8", "url": "https://html.spec.whatwg.org/multipage/webappapis.html#secure-context", "dfnText": "secure context", "refSections": [{"refs": [{"id": "ref-for-secure-context"}], "title": "13. The JavaScript API"}, {"refs": [{"id": "ref-for-secure-context\u2460"}], "title": "14.8. Append or modify a request Sec-Browsing-Topics header"}], "external": true};
-window.dfnpanelData['2b34361d'] = {"dfnID": "2b34361d", "url": "https://www.rfc-editor.org/rfc/rfc8941.html#ame-parameters", "dfnText": "structured fields parameters", "refSections": [{"refs": [{"id": "ref-for-ame-parameters"}, {"id": "ref-for-ame-parameters\u2460"}, {"id": "ref-for-ame-parameters\u2461"}], "title": "14.8. Append or modify a request Sec-Browsing-Topics header"}], "external": true};
+window.dfnpanelData['5bea5516'] = {"dfnID": "5bea5516", "url": "https://www.rfc-editor.org/rfc/rfc8941.html#name-parameters", "dfnText": "structured fields parameters", "refSections": [{"refs": [{"id": "ref-for-name-parameters"}, {"id": "ref-for-name-parameters\u2460"}, {"id": "ref-for-name-parameters\u2461"}], "title": "14.8. Append or modify a request Sec-Browsing-Topics header"}], "external": true};
 window.dfnpanelData['b5e4ce8a'] = {"dfnID": "b5e4ce8a", "url": "https://www.rfc-editor.org/rfc/rfc8941.html#name-tokens", "dfnText": "structured fields token", "refSections": [{"refs": [{"id": "ref-for-name-tokens"}, {"id": "ref-for-name-tokens\u2460"}, {"id": "ref-for-name-tokens\u2461"}], "title": "14.8. Append or modify a request Sec-Browsing-Topics header"}], "external": true};
 window.dfnpanelData['30717154'] = {"dfnID": "30717154", "url": "https://html.spec.whatwg.org/multipage/document-sequences.html#nav-top", "dfnText": "top-level traversable", "refSections": [{"refs": [{"id": "ref-for-nav-top"}], "title": "13. The JavaScript API"}, {"refs": [{"id": "ref-for-nav-top\u2460"}], "title": "14.8. Append or modify a request Sec-Browsing-Topics header"}, {"refs": [{"id": "ref-for-nav-top\u2461"}], "title": "14.9. The `Observe-Browsing-Topics` HTTP response header"}], "external": true};
 window.dfnpanelData['53275e46'] = {"dfnID": "53275e46", "url": "https://infra.spec.whatwg.org/#list-append", "dfnText": "append (for list)", "refSections": [{"refs": [{"id": "ref-for-list-append"}], "title": "7. Collect page topics calculation input data"}, {"refs": [{"id": "ref-for-list-append\u2460"}, {"id": "ref-for-list-append\u2461"}, {"id": "ref-for-list-append\u2462"}, {"id": "ref-for-list-append\u2463"}], "title": "9. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-list-append\u2464"}], "title": "10. Epochs for caller"}], "external": true};
