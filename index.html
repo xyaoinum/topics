@@ -5,10 +5,10 @@
   <title>Topics API</title>
   <meta content="w3c/CG-DRAFT" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
-  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version 5fcd28d6d, updated Tue May 30 13:12:11 2023 -0700" name="generator">
   <link href="https://github.com/patcg-individual-drafts/topics" rel="canonical">
-  <meta content="8107ab3fa7cea5f9b9410c0457943cb178efbbab" name="document-revision">
+  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
+  <meta content="fcd40470ffca196915f20842181c72f288cd729f" name="document-revision">
 <style>
 /* .XXX from https://resources.whatwg.org/standard.css */
 .XXX {
@@ -678,7 +678,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Topics API</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-06-06">6 June 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-06-13">13 June 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -696,7 +696,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2023/software-license" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -1116,7 +1116,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li data-md>
        <p>Let <var>lastEpochTime</var> be <var>epochs</var>[<var>numEpochs</var> − 1]'s <a data-link-type="dfn" href="#epoch-time" id="ref-for-epoch-time②">time</a>.</p>
       <li data-md>
-       <p>Let <var>epochSwitchTimeDecisionHash</var> be 64 bit truncation of the output of the <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc6234#section-8.3" id="ref-for-section-8.3">HMAC algorithm</a>, given input parameters: whichSha=SHA256, key=user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state⑨">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-hmac-key" id="ref-for-user-topics-state-hmac-key①">hmac key</a>, and message_array=the concatenation of <var>epochSwitchTimeDecisionHash</var> and <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-top-level-context-domain" id="ref-for-topics-caller-context-top-level-context-domain">top level context domain</a>.</p>
+       <p>Let <var>epochSwitchTimeDecisionMessageArray</var> be the concatenation of "epoch-switch-time-decision|" and <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-top-level-context-domain" id="ref-for-topics-caller-context-top-level-context-domain">top level context domain</a>.</p>
+      <li data-md>
+       <p>Let <var>epochSwitchTimeDecisionHmacOutput</var> be the output of the <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc6234#section-8.3" id="ref-for-section-8.3">HMAC algorithm</a>, given input parameters: whichSha=SHA256, key=user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state⑨">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-hmac-key" id="ref-for-user-topics-state-hmac-key①">hmac key</a>, and message_array=<var>epochSwitchTimeDecisionMessageArray</var>.</p>
+      <li data-md>
+       <p>Let <var>epochSwitchTimeDecisionHash</var> be 64 bit truncation of <var>epochSwitchTimeDecisionHmacOutput</var>.</p>
       <li data-md>
        <p>Let <var>epochSwitchTimeDelayIntroduction</var> be a <a data-link-type="dfn" href="https://w3c.github.io/hr-time/#dfn-duration" id="ref-for-dfn-duration①⓪">duration</a> of (<var>epochSwitchTimeDecisionHash</var> % 172800) seconds (i.e. 172800 is 2 days in seconds).</p>
       <li data-md>
@@ -1198,7 +1202,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li data-md>
          <p>Let <var>topic</var> be null.</p>
         <li data-md>
-         <p>Let <var>topTopicIndexDecisionHash</var> be 64 bit truncation of the output of the <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc6234#section-8.3" id="ref-for-section-8.3①">HMAC algorithm</a>, given input parameters: whichSha=SHA256, key=user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state①⓪">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-hmac-key" id="ref-for-user-topics-state-hmac-key②">hmac key</a>, and message_array=the concatenation of <var>topTopicIndexDecisionHash</var>, <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-time" id="ref-for-epoch-time③">time</a>, and <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-top-level-context-domain" id="ref-for-topics-caller-context-top-level-context-domain①">top level context domain</a></p>
+         <p>Let <var>topTopicIndexDecisionMessageArray</var> be the concatenation of "top-topic-index-decision|", <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-time" id="ref-for-epoch-time③">time</a>, and <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-top-level-context-domain" id="ref-for-topics-caller-context-top-level-context-domain①">top level context domain</a>.</p>
+        <li data-md>
+         <p>Let <var>topTopicIndexDecisionHmacOutput</var> be the output of the <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc6234#section-8.3" id="ref-for-section-8.3①">HMAC algorithm</a>, given input parameters: whichSha=SHA256, key=user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state①⓪">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-hmac-key" id="ref-for-user-topics-state-hmac-key②">hmac key</a>, and message_array=<var>topTopicIndexDecisionMessageArray</var>.</p>
+        <li data-md>
+         <p>Let <var>topTopicIndexDecisionHash</var> be 64 bit truncation of <var>topTopicIndexDecisionHmacOutput</var>.</p>
         <li data-md>
          <p>Let <var>topTopicIndex</var> be <var>topTopicIndexDecisionHash</var> % 5.</p>
         <li data-md>
@@ -1214,12 +1222,20 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li data-md>
          <p>If <var>topic</var> is null, or if <var>topic</var>’s <code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-topic" id="ref-for-dom-browsingtopic-topic③">topic</a></code> is 0 (i.e. the candidate topic was cleared), then continue.</p>
         <li data-md>
-         <p>Let <var>randomOrTopTopicDecisionHash</var> be 64 bit truncation of the output of the <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc6234#section-8.3" id="ref-for-section-8.3②">HMAC algorithm</a>, given input parameters: whichSha=SHA256, key=user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state①①">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-hmac-key" id="ref-for-user-topics-state-hmac-key③">hmac key</a>, and message_array=the concatenation of <var>randomOrTopTopicDecisionHash</var>, <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-time" id="ref-for-epoch-time④">time</a>, and <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-top-level-context-domain" id="ref-for-topics-caller-context-top-level-context-domain②">top level context domain</a>.</p>
+         <p>Let <var>randomOrTopTopicDecisionMessageArray</var> be the concatenation of "random-or-top-topic-decision|", <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-time" id="ref-for-epoch-time④">time</a>, and <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-top-level-context-domain" id="ref-for-topics-caller-context-top-level-context-domain②">top level context domain</a>.</p>
+        <li data-md>
+         <p>Let <var>randomOrTopTopicDecisionHmacOutput</var> be the output of the <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc6234#section-8.3" id="ref-for-section-8.3②">HMAC algorithm</a>, given input parameters: whichSha=SHA256, key=user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state①①">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-hmac-key" id="ref-for-user-topics-state-hmac-key③">hmac key</a>, and message_array=<var>randomOrTopTopicDecisionMessageArray</var>.</p>
+        <li data-md>
+         <p>Let <var>randomOrTopTopicDecisionHash</var> be 64 bit truncation of <var>randomOrTopTopicDecisionHmacOutput</var>.</p>
         <li data-md>
          <p>If <var>randomOrTopTopicDecisionHash</var> % 100 &lt; 5:</p>
          <ol>
           <li data-md>
-           <p>Let <var>randomTopicIndexDecisionHash</var> be 64 bit truncation of the output of the <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc6234#section-8.3" id="ref-for-section-8.3③">HMAC algorithm</a>, given input parameters: whichSha=SHA256, key=user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state①②">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-hmac-key" id="ref-for-user-topics-state-hmac-key④">hmac key</a>, and message_array=the concatenation of <var>randomTopicIndexDecisionHash</var>, <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-time" id="ref-for-epoch-time⑤">time</a>, and <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-top-level-context-domain" id="ref-for-topics-caller-context-top-level-context-domain③">top level context domain</a>.</p>
+           <p>Let <var>randomTopicIndexDecisionMessageArray</var> be the concatenation of "random-topic-index-decision|", <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-time" id="ref-for-epoch-time⑤">time</a>, and <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-top-level-context-domain" id="ref-for-topics-caller-context-top-level-context-domain③">top level context domain</a>.</p>
+          <li data-md>
+           <p>Let <var>randomTopicIndexDecisionHmacOutput</var> be the output of the <a data-link-type="dfn" href="https://www.rfc-editor.org/rfc/rfc6234#section-8.3" id="ref-for-section-8.3③">HMAC algorithm</a>, given input parameters: whichSha=SHA256, key=user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state①②">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-hmac-key" id="ref-for-user-topics-state-hmac-key④">hmac key</a>, and message_array=<var>randomTopicIndexDecisionMessageArray</var>.</p>
+          <li data-md>
+           <p>Let <var>randomTopicIndexDecisionHash</var> be 64 bit truncation of <var>randomTopicIndexDecisionHmacOutput</var>.</p>
           <li data-md>
            <p>Let <var>randomTopicIndex</var> be <var>randomTopicIndexDecisionHash</var> % <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-taxonomy" id="ref-for-epoch-taxonomy①">taxonomy</a>'s <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-size" id="ref-for-list-size③">size</a>.</p>
           <li data-md>
@@ -1426,12 +1442,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li data-md>
          <p>If <var>versionsToTopics</var>[<var>version</var>] does not exist, then set it to an empty list.</p>
         <li data-md>
-         <p>Append <var>topicInteger</var> to If <var>versionsToTopics</var>[<var>version</var>].</p>
+         <p>Append <var>topicInteger</var> to <var>versionsToTopics</var>[<var>version</var>].</p>
        </ol>
       <li data-md>
        <p>Let <var>topicsStructuredFieldsList</var> be an empty <a href="https://www.rfc-editor.org/rfc/rfc8941.html#name-lists">Structured Fields List</a>.</p>
       <li data-md>
-       <p>For each <var>version</var> -> <var>topicIntegers</var> of <var>versionsToTopics</var>:</p>
+       <p>For each <var>version</var> → <var>topicIntegers</var> of <var>versionsToTopics</var>:</p>
        <ol>
         <li data-md>
          <p>Let <var>innerList</var> be an empty <a href="https://www.rfc-editor.org/rfc/rfc8941.html#name-inner-lists">Structured Fields Inner List</a>.</p>
