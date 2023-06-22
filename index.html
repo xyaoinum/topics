@@ -8,7 +8,7 @@
   <meta content="Bikeshed version 516eaf3cf, updated Tue Jun 20 13:48:28 2023 -0700" name="generator">
   <link href="https://github.com/patcg-individual-drafts/topics" rel="canonical">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="a4d01c1b61bd24127e077481d85e70bc4d45324f" name="document-revision">
+  <meta content="a34a2d206c776b6977097cbe5d260782e6b7c0f5" name="document-revision">
 <style>
 /* .XXX from https://resources.whatwg.org/standard.css */
 .XXX {
@@ -678,7 +678,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Topics API</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-06-21">21 June 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-06-22">22 June 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -941,13 +941,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </ol>
     </div>
     <h2 class="heading settled" data-level="9" id="derive-top-5-topics-header"><span class="secno">9. </span><span class="content">Derive top 5 topics</span><a class="self-link" href="#derive-top-5-topics-header"></a></h2>
-    <p>Given a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list②">list</a> of <a data-link-type="dfn" href="#browsing-topics-types-topics-history-entry" id="ref-for-browsing-topics-types-topics-history-entry⑤">topics history entries</a> <var>historyEntriesForUserTopics</var>, the browser should provide an algorithm to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="derive-top-5-topics">derive top 5 topics</dfn>, that are believed to be valuable for the Topics callers.</p>
+    <p>Given a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list②">list</a> of <a data-link-type="dfn" href="#browsing-topics-types-topics-history-entry" id="ref-for-browsing-topics-types-topics-history-entry⑤">topics history entries</a> <var>historyEntriesForUserTopics</var>, the browser should provide an algorithm to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="derive-top-5-topics">derive top 5 topics</dfn>, that are believed to be valuable for the Topics callers. The algorithm should return a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list③">list</a> of 5 <a data-link-type="dfn" href="#browsing-topics-types-topic-ids" id="ref-for-browsing-topics-types-topic-ids⑧">topic ids</a>.</p>
     <div class="note" role="note">
       Chrome’s initial release scores topics by the frequency of page loads with that topic. 
-     <div class="example" id="example-d5fe0401">
-      <a class="self-link" href="#example-d5fe0401"></a> 
+     <div class="example" id="example-5af31995">
+      <a class="self-link" href="#example-5af31995"></a> 
       <div class="algorithm" data-algorithm="example-algorithm">
-       <p>Given a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list③">list</a> of <a data-link-type="dfn" href="#browsing-topics-types-topics-history-entry" id="ref-for-browsing-topics-types-topics-history-entry⑥">topics history entries</a> <var>historyEntriesForUserTopics</var>:</p>
+       <p>Given a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list④">list</a> of <a data-link-type="dfn" href="#browsing-topics-types-topics-history-entry" id="ref-for-browsing-topics-types-topics-history-entry⑥">topics history entries</a> <var>historyEntriesForUserTopics</var>:</p>
        <ol>
         <li data-md>
          <p>Let <var>topicsCount</var> be an empty map.</p>
@@ -955,20 +955,22 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
          <p>For each <a data-link-type="dfn" href="#browsing-topics-types-topics-history-entry" id="ref-for-browsing-topics-types-topics-history-entry⑦">topics history entry</a> <var>historyEntry</var> in <var>historyEntriesForUserTopics</var>:</p>
          <ol>
           <li data-md>
-           <p><a data-link-type="dfn" href="#classify" id="ref-for-classify">Classify</a> <var>historyEntry</var>’s <a data-link-type="dfn" href="#topics-history-entry-topics-calculation-input-data" id="ref-for-topics-history-entry-topics-calculation-input-data①">topics calculation input data</a> into <var>topicIds</var>.</p>
+           <p>Let <var>topicIds</var> be the result of <a data-link-type="dfn" href="#classify" id="ref-for-classify">classifying</a> <var>historyEntry</var>’s <a data-link-type="dfn" href="#topics-history-entry-topics-calculation-input-data" id="ref-for-topics-history-entry-topics-calculation-input-data①">topics calculation input data</a>.</p>
           <li data-md>
            <p>For each <var>topicId</var> in <var>topicIds</var>:</p>
-          <li data-md>
-           <p>If <var>topicsCount</var>[<var>topicId</var>] does not exist:</p>
            <ol>
             <li data-md>
-             <p>Initialize <var>topicsCount</var>[<var>topicId</var>] to 0.</p>
+             <p>If <var>topicsCount</var>[<var>topicId</var>] does not exist:</p>
+             <ol>
+              <li data-md>
+               <p>Initialize <var>topicsCount</var>[<var>topicId</var>] to 0.</p>
+             </ol>
+            <li data-md>
+             <p>Increment <var>topicsCount</var>[<var>topicId</var>] by 1.</p>
            </ol>
-          <li data-md>
-           <p>Increment <var>topicsCount</var>[<var>topicId</var>] by 1.</p>
          </ol>
         <li data-md>
-         <p>Let <var>top5Topics</var> be a list containing the top up to 5 <var>topicId</var>s in <var>topicsCount</var>’s keys set, where the <var>topicId</var>s with more count are retrieved first.</p>
+         <p>Let <var>top5Topics</var> be a list containing the top up to 5 <var>topicId</var>s in <var>topicsCount</var>’s <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-keys" id="ref-for-map-getting-the-keys">keys</a>, where the <var>topicId</var>s with more count are retrieved first.</p>
         <li data-md>
          <p>If <var>top5Topics</var> has less than 5 entries:</p>
          <ol>
@@ -1055,13 +1057,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li data-md>
          <p>If <var>visitTime</var> is before <var>topicsCallerDataStartTime</var>, then continue.</p>
         <li data-md>
+         <p>Let <var>topicIds</var> be the result of <a data-link-type="dfn" href="#classify" id="ref-for-classify①">classifying</a> <var>topicsHistoryEntry</var>’s <a data-link-type="dfn" href="#topics-history-entry-topics-calculation-input-data" id="ref-for-topics-history-entry-topics-calculation-input-data②">topics calculation input data</a>.</p>
+        <li data-md>
          <p>If <var>visitTime</var> is greater than <var>userTopicsDataStartTime</var>:</p>
          <ol>
           <li data-md>
            <p><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-append" id="ref-for-list-append②">Append</a> <var>topicsHistoryEntry</var> to <var>historyEntriesForUserTopics</var>.</p>
          </ol>
-        <li data-md>
-         <p><a data-link-type="dfn" href="#classify" id="ref-for-classify①">Classify</a> <var>topicsHistoryEntry</var>’s <a data-link-type="dfn" href="#topics-history-entry-topics-calculation-input-data" id="ref-for-topics-history-entry-topics-calculation-input-data②">topics calculation input data</a> into <var>topicIds</var>.</p>
         <li data-md>
          <p>For each <var>topicId</var> in <var>topicIds</var>:</p>
          <ol>
@@ -1069,7 +1071,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
            <p>If <var>topicsCallers</var>[<var>topicId</var>] does not exist:</p>
            <ol>
             <li data-md>
-             <p>Initialize <var>topicsCallers</var>[<var>topicId</var>] to be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list④">list</a>.</p>
+             <p>Initialize <var>topicsCallers</var>[<var>topicId</var>] to be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑤">list</a>.</p>
            </ol>
           <li data-md>
            <p>For each <var>callerOrigin</var> in <var>topicsHistoryEntry</var>’s <a data-link-type="dfn" href="#topics-history-entry-topics-caller-origins" id="ref-for-topics-history-entry-topics-caller-origins①">topics caller origins</a>:</p>
@@ -1082,7 +1084,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li data-md>
        <p>Let <var>top5Topics</var> be the result of running <a data-link-type="dfn" href="#derive-top-5-topics" id="ref-for-derive-top-5-topics">derive top 5 topics</a> algorithm, given <var>historyEntriesForUserTopics</var>.</p>
       <li data-md>
-       <p>Let <var>top5TopicsWithCallerOrigins</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑤">list</a>.</p>
+       <p>Let <var>top5TopicsWithCallerOrigins</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑥">list</a>.</p>
       <li data-md>
        <p>For each <var>topTopicId</var> in <var>top5Topics</var>:</p>
        <ol>
@@ -1140,7 +1142,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li data-md>
        <p>Let <var>epochs</var> be user agent’s <a data-link-type="dfn" href="#user-agent-user-topics-state" id="ref-for-user-agent-user-topics-state⑧">user topics state</a>'s <a data-link-type="dfn" href="#user-topics-state-epochs" id="ref-for-user-topics-state-epochs⑧">epochs</a>.</p>
       <li data-md>
-       <p>If <var>epochs</var> is empty, then return an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑥">list</a>.</p>
+       <p>If <var>epochs</var> is empty, then return an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑦">list</a>.</p>
       <li data-md>
        <p>Let <var>numEpochs</var> be <var>epochs</var>’s <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-size" id="ref-for-list-size①">size</a>.</p>
       <li data-md>
@@ -1156,7 +1158,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li data-md>
        <p>Let <var>timestamp</var> be <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-timestamp" id="ref-for-topics-caller-context-timestamp">timestamp</a>.</p>
       <li data-md>
-       <p>Let <var>result</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑦">list</a>.</p>
+       <p>Let <var>result</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑧">list</a>.</p>
       <li data-md>
        <p>Let <var>startEpochIndex</var> be -1.</p>
       <li data-md>
@@ -1173,7 +1175,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <p>Else:</p>
        <ol>
         <li data-md>
-         <p>Set <var>startEpochIndex</var> to max(<var>numEpochs</var> − 1, 0).</p>
+         <p>Set <var>startEpochIndex</var> to max(<var>numEpochs</var> − 3, 0).</p>
         <li data-md>
          <p>Set <var>endEpochIndex</var> to <var>numEpochs</var> − 1.</p>
        </ol>
@@ -1181,7 +1183,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <p>If <var>endEpochIndex</var> ≥ 0:</p>
        <ol>
         <li data-md>
-         <p>Let <var>i</var> bestartEpochIndex.</p>
+         <p>Let <var>i</var> be <var>startEpochIndex</var>.</p>
         <li data-md>
          <p>While <var>i</var> ≤ <var>endEpochIndex</var>:</p>
          <ol>
@@ -1223,7 +1225,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li data-md>
        <p>Let <var>epochs</var> be the result of running the <a data-link-type="dfn" href="#calculate-the-epochs-for-caller" id="ref-for-calculate-the-epochs-for-caller①">calculate the epochs for caller</a> algorithm given <var>callerContext</var> as input.</p>
       <li data-md>
-       <p>Let <var>result</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑧">list</a>.</p>
+       <p>Let <var>result</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑨">list</a>.</p>
       <li data-md>
        <p>For each <var>epoch</var> in <var>epochs</var>:</p>
        <ol>
@@ -1497,7 +1499,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li data-md>
        <p>Let <var>maxNumberOfEpochs</var> be 3 (i.e. topics are selected from the last 3 epochs).</p>
       <li data-md>
-       <p>Let <var>topicMaxLength</var> be number of base-10 digits in the maximum <a data-link-type="dfn" href="#browsing-topics-types-topic-ids" id="ref-for-browsing-topics-types-topic-ids⑧">topic id</a> (e.g. for <a href="https://github.com/patcg-individual-drafts/topics/blob/main/taxonomy_v1.md">Chrome’s initial taxonomy</a>, <var>topicMaxLength</var> is 3, as the <a data-link-type="dfn" href="#browsing-topics-types-topic-ids" id="ref-for-browsing-topics-types-topic-ids⑨">topic id</a> has maximum 3 digits).</p>
+       <p>Let <var>topicMaxLength</var> be number of base-10 digits in the maximum <a data-link-type="dfn" href="#browsing-topics-types-topic-ids" id="ref-for-browsing-topics-types-topic-ids⑨">topic id</a> (e.g. for <a href="https://github.com/patcg-individual-drafts/topics/blob/main/taxonomy_v1.md">Chrome’s initial taxonomy</a>, <var>topicMaxLength</var> is 3, as the <a data-link-type="dfn" href="#browsing-topics-types-topic-ids" id="ref-for-browsing-topics-types-topic-ids①⓪">topic id</a> has maximum 3 digits).</p>
       <li data-md>
        <p>Let <var>versionMaxLength</var> be the length of the current <a data-link-type="dfn" href="#browsing-topics-types-maximum-version-string-length" id="ref-for-browsing-topics-types-maximum-version-string-length①">maximum version string length</a>.</p>
       <li data-md>
@@ -1566,7 +1568,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <a class="self-link" href="#example-eed5242a"></a> Three returned topics, and underlying epochs have three different versions: 
        <p><code>(100);v=chrome.1:1:20, (200);v=chrome.1:1:40, (300);v=chrome.1:1:60, ();p=P</code></p>
       </div>
-      <p>Why adding paddings: servers typically have a GET request size limit e.g. 8KB, and will return an error when the limit is reached. An attacker can rely this to learn the number of topics for a different origin, and/or a small amount of information about the topics themselves (e.g whether the <a data-link-type="dfn" href="#browsing-topics-types-topic-ids" id="ref-for-browsing-topics-types-topic-ids①⓪">topic ids</a> are &lt; 10, &lt; 100, etc.)</p>
+      <p>Why adding paddings: servers typically have a GET request size limit e.g. 8KB, and will return an error when the limit is reached. An attacker can rely this to learn the number of topics for a different origin, and/or a small amount of information about the topics themselves (e.g whether the <a data-link-type="dfn" href="#browsing-topics-types-topic-ids" id="ref-for-browsing-topics-types-topic-ids①①">topic ids</a> are &lt; 10, &lt; 100, etc.)</p>
       <p>The various lengths being returned (that depends on the number of distinct versions) could leak which epochs the user had disabled topics or didn’t use the browser, if it coincided with the version change. But this leak is minor. The most common cases (i.e. returning same version topics, or no topics) will have the same length.</p>
      </div>
      <div class="note" role="note"> In Chrome’s experimentation phase, it will additionally require a valid <a href="https://github.com/GoogleChrome/OriginTrials/blob/gh-pages/explainer.md">Origin Trial</a> token to exist in <var>initiatorWindow</var>’s <a data-cite="!HTML#concept-document-window" data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#concept-document-window" id="ref-for-concept-document-window">associated document</a> for the request to be eligible for topics. </div>
@@ -1842,6 +1844,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li><span class="dfn-paneled" id="ae8def21">contain</span>
      <li><span class="dfn-paneled" id="1243a891">exist</span>
      <li><span class="dfn-paneled" id="860300d4">implementation-defined</span>
+     <li><span class="dfn-paneled" id="31db57e6">keys</span>
      <li><span class="dfn-paneled" id="649608b9">list</span>
      <li><span class="dfn-paneled" id="84b454ff">ordered map</span>
      <li><span class="dfn-paneled" id="0204d188">size</span>
@@ -2299,7 +2302,8 @@ window.dfnpanelData['4a3bf5fb'] = {"dfnID": "4a3bf5fb", "url": "https://infra.sp
 window.dfnpanelData['ae8def21'] = {"dfnID": "ae8def21", "url": "https://infra.spec.whatwg.org/#list-contain", "dfnText": "contain", "refSections": [{"refs": [{"id": "ref-for-list-contain"}], "title": "15.9. The `Observe-Browsing-Topics` HTTP response header"}], "external": true};
 window.dfnpanelData['1243a891'] = {"dfnID": "1243a891", "url": "https://infra.spec.whatwg.org/#map-exists", "dfnText": "exist", "refSections": [{"refs": [{"id": "ref-for-map-exists"}], "title": "15.4. Modification to request constructor steps"}], "external": true};
 window.dfnpanelData['860300d4'] = {"dfnID": "860300d4", "url": "https://infra.spec.whatwg.org/#implementation-defined", "dfnText": "implementation-defined", "refSections": [{"refs": [{"id": "ref-for-implementation-defined"}], "title": "5. document ID"}], "external": true};
-window.dfnpanelData['649608b9'] = {"dfnID": "649608b9", "url": "https://infra.spec.whatwg.org/#list", "dfnText": "list", "refSections": [{"refs": [{"id": "ref-for-list"}], "title": "2. Terminology and types"}, {"refs": [{"id": "ref-for-list\u2460"}], "title": "3. User agent associated state"}, {"refs": [{"id": "ref-for-list\u2461"}, {"id": "ref-for-list\u2462"}], "title": "9. Derive top 5 topics"}, {"refs": [{"id": "ref-for-list\u2463"}, {"id": "ref-for-list\u2464"}], "title": "10. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-list\u2465"}, {"id": "ref-for-list\u2466"}], "title": "11. Epochs for caller"}, {"refs": [{"id": "ref-for-list\u2467"}], "title": "13. Topics for caller"}], "external": true};
+window.dfnpanelData['31db57e6'] = {"dfnID": "31db57e6", "url": "https://infra.spec.whatwg.org/#map-getting-the-keys", "dfnText": "keys", "refSections": [{"refs": [{"id": "ref-for-map-getting-the-keys"}], "title": "9. Derive top 5 topics"}], "external": true};
+window.dfnpanelData['649608b9'] = {"dfnID": "649608b9", "url": "https://infra.spec.whatwg.org/#list", "dfnText": "list", "refSections": [{"refs": [{"id": "ref-for-list"}], "title": "2. Terminology and types"}, {"refs": [{"id": "ref-for-list\u2460"}], "title": "3. User agent associated state"}, {"refs": [{"id": "ref-for-list\u2461"}, {"id": "ref-for-list\u2462"}, {"id": "ref-for-list\u2463"}], "title": "9. Derive top 5 topics"}, {"refs": [{"id": "ref-for-list\u2464"}, {"id": "ref-for-list\u2465"}], "title": "10. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-list\u2466"}, {"id": "ref-for-list\u2467"}], "title": "11. Epochs for caller"}, {"refs": [{"id": "ref-for-list\u2468"}], "title": "13. Topics for caller"}], "external": true};
 window.dfnpanelData['84b454ff'] = {"dfnID": "84b454ff", "url": "https://infra.spec.whatwg.org/#ordered-map", "dfnText": "ordered map", "refSections": [{"refs": [{"id": "ref-for-ordered-map"}], "title": "15.8. Append or modify a request Sec-Browsing-Topics header"}], "external": true};
 window.dfnpanelData['0204d188'] = {"dfnID": "0204d188", "url": "https://infra.spec.whatwg.org/#list-size", "dfnText": "size", "refSections": [{"refs": [{"id": "ref-for-list-size"}], "title": "10. Periodically calculate user topics"}, {"refs": [{"id": "ref-for-list-size\u2460"}], "title": "11. Epochs for caller"}, {"refs": [{"id": "ref-for-list-size\u2461"}], "title": "12. Get the number of distinct versions in epochs"}, {"refs": [{"id": "ref-for-list-size\u2462"}], "title": "13. Topics for caller"}], "external": true};
 window.dfnpanelData['6d19ac93'] = {"dfnID": "6d19ac93", "url": "https://infra.spec.whatwg.org/#user-agent", "dfnText": "user agent", "refSections": [{"refs": [{"id": "ref-for-user-agent"}, {"id": "ref-for-user-agent\u2460"}, {"id": "ref-for-user-agent\u2461"}, {"id": "ref-for-user-agent\u2462"}], "title": "3. User agent associated state"}], "external": true};
@@ -2323,7 +2327,7 @@ window.dfnpanelData['9cce47fd'] = {"dfnID": "9cce47fd", "url": "https://webidl.s
 window.dfnpanelData['4013a022'] = {"dfnID": "4013a022", "url": "https://webidl.spec.whatwg.org/#this", "dfnText": "this", "refSections": [{"refs": [{"id": "ref-for-this"}], "title": "14. The JavaScript API"}], "external": true};
 window.dfnpanelData['f14b47b8'] = {"dfnID": "f14b47b8", "url": "https://webidl.spec.whatwg.org/#idl-unsigned-long-long", "dfnText": "unsigned long long", "refSections": [{"refs": [{"id": "ref-for-idl-unsigned-long-long"}], "title": "4. BrowsingTopic dictionary"}], "external": true};
 window.dfnpanelData['browsing-topics-types-taxonomy'] = {"dfnID": "browsing-topics-types-taxonomy", "url": "#browsing-topics-types-taxonomy", "dfnText": "taxonomy", "refSections": [{"refs": [{"id": "ref-for-browsing-topics-types-taxonomy"}], "title": "2. Terminology and types"}, {"refs": [{"id": "ref-for-browsing-topics-types-taxonomy\u2460"}], "title": "3. User agent associated state"}], "external": false};
-window.dfnpanelData['browsing-topics-types-topic-ids'] = {"dfnID": "browsing-topics-types-topic-ids", "url": "#browsing-topics-types-topic-ids", "dfnText": "topic ids", "refSections": [{"refs": [{"id": "ref-for-browsing-topics-types-topic-ids"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2460"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2461"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2462"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2463"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2464"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2465"}], "title": "2. Terminology and types"}, {"refs": [{"id": "ref-for-browsing-topics-types-topic-ids\u2466"}], "title": "4. BrowsingTopic dictionary"}, {"refs": [{"id": "ref-for-browsing-topics-types-topic-ids\u2467"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2468"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2460\u24ea"}], "title": "15.8. Append or modify a request Sec-Browsing-Topics header"}], "external": false};
+window.dfnpanelData['browsing-topics-types-topic-ids'] = {"dfnID": "browsing-topics-types-topic-ids", "url": "#browsing-topics-types-topic-ids", "dfnText": "topic ids", "refSections": [{"refs": [{"id": "ref-for-browsing-topics-types-topic-ids"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2460"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2461"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2462"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2463"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2464"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2465"}], "title": "2. Terminology and types"}, {"refs": [{"id": "ref-for-browsing-topics-types-topic-ids\u2466"}], "title": "4. BrowsingTopic dictionary"}, {"refs": [{"id": "ref-for-browsing-topics-types-topic-ids\u2467"}], "title": "9. Derive top 5 topics"}, {"refs": [{"id": "ref-for-browsing-topics-types-topic-ids\u2468"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2460\u24ea"}, {"id": "ref-for-browsing-topics-types-topic-ids\u2460\u2460"}], "title": "15.8. Append or modify a request Sec-Browsing-Topics header"}], "external": false};
 window.dfnpanelData['browsing-topics-types-taxonomy-version'] = {"dfnID": "browsing-topics-types-taxonomy-version", "url": "#browsing-topics-types-taxonomy-version", "dfnText": "taxonomy version", "refSections": [{"refs": [{"id": "ref-for-browsing-topics-types-taxonomy-version"}], "title": "2. Terminology and types"}, {"refs": [{"id": "ref-for-browsing-topics-types-taxonomy-version\u2460"}], "title": "3. User agent associated state"}, {"refs": [{"id": "ref-for-browsing-topics-types-taxonomy-version\u2461"}], "title": "4. BrowsingTopic dictionary"}], "external": false};
 window.dfnpanelData['get-descendant-topics'] = {"dfnID": "get-descendant-topics", "url": "#get-descendant-topics", "dfnText": "get descendant topics", "refSections": [{"refs": [{"id": "ref-for-get-descendant-topics"}], "title": "10. Periodically calculate user topics"}], "external": false};
 window.dfnpanelData['browsing-topics-types-model-version'] = {"dfnID": "browsing-topics-types-model-version", "url": "#browsing-topics-types-model-version", "dfnText": "model version", "refSections": [{"refs": [{"id": "ref-for-browsing-topics-types-model-version"}], "title": "2. Terminology and types"}, {"refs": [{"id": "ref-for-browsing-topics-types-model-version\u2460"}], "title": "3. User agent associated state"}, {"refs": [{"id": "ref-for-browsing-topics-types-model-version\u2461"}], "title": "4. BrowsingTopic dictionary"}], "external": false};
