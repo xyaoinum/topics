@@ -8,7 +8,7 @@
   <meta content="Bikeshed version b06c00b8e, updated Tue Jul 11 13:41:16 2023 -0700" name="generator">
   <link href="https://github.com/patcg-individual-drafts/topics" rel="canonical">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="bc984cdc3833081fda6f7ff72b22ebf60550acb2" name="document-revision">
+  <meta content="9e8aef51857f45271ba100ba2f5e836fef390fbd" name="document-revision">
 <style>
 /* .XXX from https://resources.whatwg.org/standard.css */
 .XXX {
@@ -1085,17 +1085,17 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
       <li data-md>
        <p>Let <var>top5Topics</var> be the result of running <a data-link-type="dfn" href="#derive-top-5-topics" id="ref-for-derive-top-5-topics">derive top 5 topics</a> algorithm, given <var>historyEntriesForUserTopics</var>.</p>
       <li data-md>
-       <p>Let <var>top5TopicsWithCallerSites</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑥">list</a>.</p>
+       <p>Let <var>top5TopicsWithCallerDomains</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list⑥">list</a>.</p>
       <li data-md>
        <p>For each <var>topTopicId</var> in <var>top5Topics</var>:</p>
        <ol>
         <li data-md>
-         <p>Let <var>topicWithCallerSites</var> be a <a data-link-type="dfn" href="#browsing-topics-types-topic-with-caller-domains" id="ref-for-browsing-topics-types-topic-with-caller-domains①">topic with caller domains</a> struct with <a data-link-type="dfn" href="#topic-with-caller-domains-topic-id" id="ref-for-topic-with-caller-domains-topic-id">topic id</a> initially 0 and <a data-link-type="dfn" href="#topic-with-caller-domains-caller-domains" id="ref-for-topic-with-caller-domains-caller-domains">caller domains</a> initially empty.</p>
+         <p>Let <var>topicWithCallerDomains</var> be a <a data-link-type="dfn" href="#browsing-topics-types-topic-with-caller-domains" id="ref-for-browsing-topics-types-topic-with-caller-domains①">topic with caller domains</a> struct with <a data-link-type="dfn" href="#topic-with-caller-domains-topic-id" id="ref-for-topic-with-caller-domains-topic-id">topic id</a> initially 0 and <a data-link-type="dfn" href="#topic-with-caller-domains-caller-domains" id="ref-for-topic-with-caller-domains-caller-domains">caller domains</a> initially empty.</p>
         <li data-md>
          <p>If <var>topTopicId</var> is allowed by user preference setting:</p>
          <ol>
           <li data-md>
-           <p>Set <var>topicWithCallerSites</var>’s <a data-link-type="dfn" href="#topic-with-caller-domains-topic-id" id="ref-for-topic-with-caller-domains-topic-id①">topic id</a> to <var>topicId</var>.</p>
+           <p>Set <var>topicWithCallerDomains</var>’s <a data-link-type="dfn" href="#topic-with-caller-domains-topic-id" id="ref-for-topic-with-caller-domains-topic-id①">topic id</a> to <var>topicId</var>.</p>
           <li data-md>
            <p>Let <var>topicWithDescendantIds</var> be the result of running <a data-link-type="dfn" href="#get-descendant-topics" id="ref-for-get-descendant-topics">get descendant topics</a> given <var>topTopicId</var>.</p>
           <li data-md>
@@ -1107,12 +1107,12 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
              <p>If <var>topicId</var> is allowed by user preference setting:</p>
              <ol>
               <li data-md>
-               <p>Insert all elements in <var>topicsCallers</var>[<var>topicId</var>] to <var>topicWithCallerSites</var>’s <a data-link-type="dfn" href="#topic-with-caller-domains-caller-domains" id="ref-for-topic-with-caller-domains-caller-domains①">caller domains</a>.</p>
+               <p>Insert all elements in <var>topicsCallers</var>[<var>topicId</var>] to <var>topicWithCallerDomains</var>’s <a data-link-type="dfn" href="#topic-with-caller-domains-caller-domains" id="ref-for-topic-with-caller-domains-caller-domains①">caller domains</a>.</p>
              </ol>
            </ol>
          </ol>
         <li data-md>
-         <p><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-append" id="ref-for-list-append④">Append</a> <var>topicWithCallerSites</var> to <var>top5TopicsWithCallerSites</var>.</p>
+         <p><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-append" id="ref-for-list-append④">Append</a> <var>topicWithCallerDomains</var> to <var>top5TopicsWithCallerDomains</var>.</p>
        </ol>
       <li data-md>
        <p>Let <var>epoch</var> be an <a data-link-type="dfn" href="#browsing-topics-types-epoch" id="ref-for-browsing-topics-types-epoch②">epoch</a> struct with default initial field values.</p>
@@ -1125,7 +1125,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
       <li data-md>
        <p>Set <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-config-version" id="ref-for-epoch-config-version">config version</a> to user agent’s <a data-link-type="dfn" href="#user-agent-configuration-version" id="ref-for-user-agent-configuration-version①">configuration version</a>.</p>
       <li data-md>
-       <p>Set <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-top-5-topics-with-caller-domains" id="ref-for-epoch-top-5-topics-with-caller-domains">top 5 topics with caller domains</a> to <var>top5TopicsWithCallerSites</var>.</p>
+       <p>Set <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-top-5-topics-with-caller-domains" id="ref-for-epoch-top-5-topics-with-caller-domains">top 5 topics with caller domains</a> to <var>top5TopicsWithCallerDomains</var>.</p>
       <li data-md>
        <p>Set <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-time" id="ref-for-epoch-time①">time</a> to <var>fromUnixEpochTime</var>.</p>
       <li data-md>
@@ -1243,14 +1243,14 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
         <li data-md>
          <p>Let <var>topTopicIndex</var> be <var>topTopicIndexDecisionHash</var> % 5.</p>
         <li data-md>
-         <p>Let <var>topTopicWithCallerSites</var> be <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-top-5-topics-with-caller-domains" id="ref-for-epoch-top-5-topics-with-caller-domains②">top 5 topics with caller domains</a>[<var>topTopicIndex</var>].</p>
+         <p>Let <var>topTopicWithCallerDomains</var> be <var>epoch</var>’s <a data-link-type="dfn" href="#epoch-top-5-topics-with-caller-domains" id="ref-for-epoch-top-5-topics-with-caller-domains②">top 5 topics with caller domains</a>[<var>topTopicIndex</var>].</p>
         <li data-md>
-         <p>If <var>topTopicWithCallerSites</var>’s <a data-link-type="dfn" href="#topic-with-caller-domains-caller-domains" id="ref-for-topic-with-caller-domains-caller-domains②">caller domains</a> contains <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-caller-domain" id="ref-for-topics-caller-context-caller-domain">caller domain</a>:</p>
+         <p>If <var>topTopicWithCallerDomains</var>’s <a data-link-type="dfn" href="#topic-with-caller-domains-caller-domains" id="ref-for-topic-with-caller-domains-caller-domains②">caller domains</a> contains <var>callerContext</var>’s <a data-link-type="dfn" href="#topics-caller-context-caller-domain" id="ref-for-topics-caller-context-caller-domain">caller domain</a>:</p>
          <ol>
           <li data-md>
            <p>Set <var>topic</var> to an empty <code class="idl"><a data-link-type="idl" href="#dictdef-browsingtopic" id="ref-for-dictdef-browsingtopic⑤">BrowsingTopic</a></code> dictionary.</p>
           <li data-md>
-           <p>Set <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-topic" id="ref-for-dom-browsingtopic-topic②">topic</a></code>"] to <var>topTopicWithCallerSites</var>’s <a data-link-type="dfn" href="#topic-with-caller-domains-topic-id" id="ref-for-topic-with-caller-domains-topic-id②">topic id</a>.</p>
+           <p>Set <var>topic</var>["<code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-topic" id="ref-for-dom-browsingtopic-topic②">topic</a></code>"] to <var>topTopicWithCallerDomains</var>’s <a data-link-type="dfn" href="#topic-with-caller-domains-topic-id" id="ref-for-topic-with-caller-domains-topic-id②">topic id</a>.</p>
          </ol>
         <li data-md>
          <p>If <var>topic</var> is null, or if <var>topic</var>’s <code class="idl"><a data-link-type="idl" href="#dom-browsingtopic-topic" id="ref-for-dom-browsingtopic-topic③">topic</a></code> is 0 (i.e. the candidate topic was cleared), then continue.</p>
